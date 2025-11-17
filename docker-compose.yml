@@ -21,7 +21,7 @@ services:
     build:
       context: ./client
       args:
-        API_HOST: backend
+        API_HOST: sgu-backend
         API_BASE: /api/users
         API_PORT: 8080
     image: client:1.0-sgu
