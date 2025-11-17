@@ -1,22 +1,24 @@
 const UsuarioController = {};
 const ENV = import.meta.env;
 
+// API final EJEMPLO:
+// http://localhost:8081/api/users
 const API_URL = `http://${ENV.VITE_API_HOST}:${ENV.VITE_API_PORT}${ENV.VITE_API_BASE}`;
 
-// ----------------- GET: Obtener todos los usuarios -----------------
+// GET: Obtener todos los usuarios
 UsuarioController.getAll = async () => {
   try {
-    const response = await fetch(`${API_URL}/users`);
+    const response = await fetch(API_URL);
     return await response.json();
   } catch (error) {
     console.error("Error al obtener los usuarios:", error);
   }
 };
 
-// ----------------- POST: Crear usuario -----------------
+// POST: Crear usuario
 UsuarioController.create = async (usuario) => {
   try {
-    const response = await fetch(`${API_URL}/users`, {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario)
@@ -28,10 +30,10 @@ UsuarioController.create = async (usuario) => {
   }
 };
 
-// ----------------- PUT: Actualizar usuario -----------------
+// PUT: Actualizar usuario
 UsuarioController.update = async (id, usuario) => {
   try {
-    const response = await fetch(`${API_URL}/users/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario),
@@ -43,10 +45,10 @@ UsuarioController.update = async (id, usuario) => {
   }
 };
 
-// ----------------- DELETE: Eliminar usuario -----------------
+// DELETE: Eliminar usuario
 UsuarioController.remove = async (id) => {
   try {
-    const response = await fetch(`${API_URL}/users/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
     });
 
