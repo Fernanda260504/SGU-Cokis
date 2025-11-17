@@ -9,9 +9,19 @@ const API_URL = `http://${ENV.VITE_API_HOST}:${ENV.VITE_API_PORT}${ENV.VITE_API_
 UsuarioController.getAll = async () => {
   try {
     const response = await fetch(API_URL);
+    
+    // Si la respuesta no es exitosa (ej: 404, 500), devolvemos un array vacío
+    if (!response.ok) {
+        console.error("Respuesta del servidor no exitosa. Estado:", response.status);
+        return [];
+    }
+    
+    // Intentamos parsear el JSON
     return await response.json();
   } catch (error) {
     console.error("Error al obtener los usuarios:", error);
+    // 🚨 COORECCIÓN: Siempre devolvemos un array vacío para evitar el error 'map' en el frontend.
+    return []; 
   }
 };
 

@@ -1,7 +1,9 @@
 package modules.user;
+
 import jakarta.persistence.*;
 
-
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +54,5 @@ public class User {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
 
 }

@@ -21,9 +21,11 @@ services:
     build:
       context: ./client
       args:
-        API_HOST: sgu-backend
+        # ✅ CAMBIO: Usar localhost porque el navegador accede desde el HOST
+        API_HOST: localhost
         API_BASE: /api/users
-        API_PORT: 8080
+        # ✅ Puerto mapeado al host (8081)
+        API_PORT: 8081
     image: client:1.0-sgu
     container_name: sgu-frontend
     ports:

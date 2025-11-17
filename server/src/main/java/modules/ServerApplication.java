@@ -1,4 +1,4 @@
-package adj.demo.server;
+package modules;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
